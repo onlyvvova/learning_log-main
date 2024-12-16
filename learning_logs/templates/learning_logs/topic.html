@@ -1,0 +1,26 @@
+{% extends "learning_logs/base.html" %}
+{% block page_header %}
+<h2 class="text-primary">Topic: {{ topic }}</h2>
+{% endblock page_header %}
+{% block content %}
+<a href="{% url 'learning_logs:new_entry' topic.id %}" class="btn btn-success mb-3">
+    <i class="fas fa-plus"></i> Add New Entry
+</a>
+<ul class="list-group">
+    {% for entry in entries %}
+        <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+                <span>
+                    <strong>{{ entry.date_added|date:"M d, Y H:i" }}</strong><br>
+                    {{ entry.text|linebreaks }}
+                </span>
+                <a href="{% url 'learning_logs:edit_entry' entry.id %}" class="btn btn-sm btn-primary">
+                    <i class="fas fa-edit"></i> Edit
+                </a>
+            </div>
+        </li>
+    {% empty %}
+        <li class="list-group-item">No entries yet! ✍</li>
+    {% endfor %}
+</ul>
+{% endblock content %}

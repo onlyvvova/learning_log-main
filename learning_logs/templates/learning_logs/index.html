@@ -1,0 +1,12 @@
+{% extends "learning_logs/base.html" %}
+{% block page_header %}
+<h2 class="text-primary">Welcome to Learning Log</h2>
+{% endblock page_header %}
+{% block content %}
+<div class="text-center">
+    <p class="lead">Track your learning progress and organize your notes effectively.</p>
+    <a href="{% url 'learning_logs:topics' %}" class="btn btn-primary btn-lg">
+        <i class="fas fa-arrow-right"></i> View Topics
+    </a>
+</div>
+{% endblock content %}
